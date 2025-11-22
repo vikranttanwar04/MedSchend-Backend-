@@ -34,7 +34,7 @@ export const signup = async (req, res) => {
         await res.cookie('token', token, {
             httpOnly: true,
             secure: process.env.NODE_ENV === "production",
-            sameSite: 'strict'
+            sameSite: 'none'
         })
 
         res.status(200).json({ message: "User registered successfully" });
@@ -59,7 +59,7 @@ export const login = async (req, res) => {
         res.cookie("token", token, {
             httpOnly: true,
             secure: process.env.NODE_ENV === "production",
-            sameSite: "lax",
+            sameSite: "none",
             maxAge: 1 * 24 * 60 * 60 * 1000,
         })
 
