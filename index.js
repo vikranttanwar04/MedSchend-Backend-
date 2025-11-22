@@ -18,7 +18,8 @@ app.listen('8080', (req, res) => {
 })
 
 async function main() {
-    await mongoose.connect('mongodb://localhost:27017/MedSched');
+    // await mongoose.connect('mongodb://localhost:27017/MedSched');
+    await mongoose.connect(process.env.MONGO_URI);
 }
 
 main()
