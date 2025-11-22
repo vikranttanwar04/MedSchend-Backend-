@@ -19,16 +19,13 @@ app.listen('8080', (req, res) => {
 
 async function main() {
     // await mongoose.connect('mongodb://localhost:27017/MedSched');
-    console.log(process.env.MONGO_URI);
     await mongoose.connect(process.env.MONGO_URI);
-    console.log('Yes, it is connected');
 }
 
 main()
     .then((res) => {
         console.log('DB connected');
     }).catch((err) => {
-        console.log(process.env.MONGO_URI);
         console.log('DB not Connected');
         console.log(err);
     })
@@ -45,6 +42,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser())
 app.use(cors({
     origin: "https://med-schend-frontend.vercel.app/",
+    methods: "GET,POST,PUT,DELETE",
     credentials: true
 }));
 
